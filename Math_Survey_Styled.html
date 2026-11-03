@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Application Survey</title>
+    <style>
+        :root { --navy:#243f70; --blue:#4169a8; --pale:#eef4ff; --line:#d5e1f4; --text:#243047; }
+        * { box-sizing: border-box; }
+        body { margin:0; padding:36px 16px 60px; background:linear-gradient(135deg,#edf3ff 0%,#f8faff 55%,#e8effc 100%); color:var(--text); font-family:Georgia,"Times New Roman",serif; }
+        .container { width:min(760px,100%); margin:0 auto; }
+        .header { width:100%; text-align:center; background:var(--navy); color:white; padding:22px 24px 18px; border-radius:16px; box-shadow:0 8px 22px rgba(36,63,112,.16); margin-bottom:22px; }
+        .header h1 { margin:0 0 9px; font-size:clamp(24px,4vw,32px); letter-spacing:.2px; }
+        .header p { margin:0; font-family:Arial,sans-serif; font-size:16px; line-height:1.8; color:#e8efff; }
+        #survey-form { width:100%; }
+        .question-card { width:100%; background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue); border-radius:13px; padding:20px 23px; margin:0 0 16px; box-shadow:0 4px 14px rgba(40,65,105,.06); transition:border-color .2s,box-shadow .2s; }
+        .question-card:focus-within { border-color:#7896ca; box-shadow:0 5px 18px rgba(65,105,168,.12); }
+        .question-card h4, .question-card > label { display:block; margin:0 0 15px; color:var(--navy); font-size:18px; font-weight:700; line-height:1.6; }
+        .question-card[dir="rtl"] { direction:rtl; text-align:right; border-left:1px solid var(--line); border-right:5px solid var(--blue); font-family:Arial,Tahoma,sans-serif; }
+        .question-card[dir="rtl"] h4, .question-card[dir="rtl"] > label { font-family:Arial,Tahoma,sans-serif; }
+        .question-card input[type="radio"], .question-card input[type="checkbox"] { accent-color:var(--blue); width:16px; height:16px; vertical-align:middle; margin:0 7px 0 2px; cursor:pointer; }
+        .question-card label:not(:first-child) { cursor:pointer; }
+        .question-card input[type="radio"] + label, .question-card input[type="checkbox"] + label { display:inline-block; padding:5px 8px; margin:0 0 5px; border-radius:7px; font-size:15px; line-height:1.55; }
+        .question-card input[type="radio"]:checked + label, .question-card input[type="checkbox"]:checked + label { background:var(--pale); color:var(--navy); font-weight:700; }
+        .question-card textarea { display:block; width:100%; min-height:90px; resize:vertical; border:1px solid #cbd7e9; border-radius:9px; padding:12px 13px; font:15px Arial,sans-serif; outline:none; background:#fbfcff; }
+        .question-card textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(65,105,168,.12); }
+        .submit-btn { display:block; width:100%; border:0; border-radius:10px; padding:14px 20px; background:var(--navy); color:white; font-size:17px; font-weight:700; cursor:pointer; transition:background .2s,transform .2s; }
+        .submit-btn:hover { background:var(--blue); transform:translateY(-1px); }
+        .submit-btn:disabled { opacity:.65; cursor:wait; transform:none; }
+        @media(max-width:520px) { body { padding:18px 11px 35px; } .header { padding:19px 14px; border-radius:12px; } .header p { font-size:14px; } .question-card { padding:17px 15px; } .question-card h4,.question-card > label { font-size:16px; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Math Application Survey</h1>
+        
+    </div>
+
+    <form id="survey-form">
+
+        <div class="question-card">
+            <h4>Academic Year</h4>
+            <input type="radio" id="year1" name="year" value="1" required>
+            <label for="year1">1</label><br>
+            <input type="radio" id="year2" name="year" value="2">
+            <label for="year2">2</label><br>
+            <input type="radio" id="year3" name="year" value="3">
+            <label for="year3">3</label><br>
+            <input type="radio" id="year4" name="year" value="4">
+            <label for="year4">4</label><br>
+            <input type="radio" id="year5" name="year" value="Other">
+            <label for="year5">Other</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>Your Major</h4>
+            <input type="radio" id="major-ai" name="major" value="AI" required>
+            <label for="major-ai">AI</label><br>
+            <input type="radio" id="major-cyber" name="major" value="Cyber">
+            <label for="major-cyber">Cyber</label><br>
+            <input type="radio" id="major-bio" name="major" value="Bio">
+            <label for="major-bio">Bio</label><br>
+            <input type="radio" id="major-engineering" name="major" value="Engineering">
+            <label for="major-engineering">Engineering</label><br>
+            <input type="radio" id="major-mathematics" name="major" value="Mathematics">
+            <label for="major-mathematics">Mathematics</label><br>
+            <input type="radio" id="major-other" name="major" value="Other">
+            <label for="major-other">Other</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>هل تستخدم تطبيقات أو مواقع لحل المسائل الرياضية؟</h4>
+            <input type="radio" id="usage-always" name="usage" value="دائما" required>
+            <label for="usage-always">دائما</label><br>
+            <input type="radio" id="usage-sometimes" name="usage" value="أحيانا">
+            <label for="usage-sometimes">أحيانا</label><br>
+            <input type="radio" id="usage-rarely" name="usage" value="نادرا">
+            <label for="usage-rarely">نادرا</label><br>
+            <input type="radio" id="usage-never" name="usage" value="لا استخدمها">
+            <label for="usage-never">لا استخدمها</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>ما التطبيقات التي تستخدمها؟</h4>
+            <input type="checkbox" id="app-photomath" name="apps" value="Photomath">
+            <label for="app-photomath">Photomath</label><br>
+            <input type="checkbox" id="app-symbolab" name="apps" value="Symbolab">
+            <label for="app-symbolab">Symbolab</label><br>
+            <input type="checkbox" id="app-wolfram" name="apps" value="Wolfram Alpha">
+            <label for="app-wolfram">Wolfram Alpha</label><br>
+            <input type="checkbox" id="app-geogebra" name="apps" value="GeoGebra">
+            <label for="app-geogebra">GeoGebra</label><br>
+            <input type="checkbox" id="app-desmos" name="apps" value="Desmos">
+            <label for="app-desmos">Desmos</label><br>
+            <input type="checkbox" id="app-other" name="apps" value="Other">
+            <label for="app-other">Other</label><br>
+            <input type="checkbox" id="app-none" name="apps" value="لا استخدم أي تطبيقات">
+            <label for="app-none">لا استخدم أي تطبيقات</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>ما المشاكل التى تواجهك في التطبيقات الأخرى؟</h4>
+            <input type="checkbox" id="problem1" name="problems" value="لا تشرح خطوات الحل بشكل كافٍ">
+            <label for="problem1">لا تشرح خطوات الحل بشكل كافٍ</label><br>
+            <input type="checkbox" id="problem2" name="problems" value="التطبيق لا يدعم بعض أنواع المسائل">
+            <label for="problem2">التطبيق لا يدعم بعض أنواع المسائل</label><br>
+            <input type="checkbox" id="problem3" name="problems" value="النتائج أحيانًا تكون صعبة الفهم">
+            <label for="problem3">النتائج أحيانًا تكون صعبة الفهم</label><br>
+            <input type="checkbox" id="problem4" name="problems" value="الواجهة معقدة">
+            <label for="problem4">الواجهة معقدة</label><br>
+            <input type="checkbox" id="problem5" name="problems" value="بعض المميزات مدفوعة">
+            <label for="problem5">بعض المميزات مدفوعة</label><br>
+            <input type="checkbox" id="problem6" name="problems" value="لا أواجه أي مشكلة">
+            <label for="problem6">لا أواجه أي مشكلة</label><br>
+            <input type="checkbox" id="problem7" name="problems" value="أخرى">
+            <label for="problem7">أخرى</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>ما المميزات التي تتمنى وجودها في تطبيق رياضي؟</h4>
+            <input type="checkbox" id="feature1" name="features" value="آلة حاسبة علمية متكاملة">
+            <label for="feature1">آلة حاسبة علمية متكاملة</label><br>
+            <input type="checkbox" id="feature2" name="features" value="حل المعادلات">
+            <label for="feature2">حل المعادلات</label><br>
+            <input type="checkbox" id="feature3" name="features" value="رسم الدوال والرسوم البيانية">
+            <label for="feature3">رسم الدوال والرسوم البيانية</label><br>
+            <input type="checkbox" id="feature4" name="features" value="Numerical Methods">
+            <label for="feature4">Numerical Methods</label><br>
+            <input type="checkbox" id="feature5" name="features" value="عرض خطوات الحل بالتفصيل">
+            <label for="feature5">عرض خطوات الحل بالتفصيل</label><br>
+            <input type="checkbox" id="feature6" name="features" value="عرض Iteration Table">
+            <label for="feature6">عرض Iteration Table</label><br>
+            <input type="checkbox" id="feature7" name="features" value="حساب Error و Convergence">
+            <label for="feature7">حساب Error و Convergence</label><br>
+            <input type="checkbox" id="feature8" name="features" value="مقارنة أكثر من طريقة لحل نفس المسألة">
+            <label for="feature8">مقارنة أكثر من طريقة لحل نفس المسألة</label><br>
+            <input type="checkbox" id="feature9" name="features" value="شرح القوانين المستخدمة">
+            <label for="feature9">شرح القوانين المستخدمة</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>هل تجد صعوبة في فهم خطوات Numerical Methods؟</h4>
+            <input type="radio" id="difficulty-yes" name="difficulty" value="نعم" required>
+            <label for="difficulty-yes">نعم</label><br>
+            <input type="radio" id="difficulty-no" name="difficulty" value="لا">
+            <label for="difficulty-no">لا</label><br>
+            <input type="radio" id="difficulty-sometimes" name="difficulty" value="أحيانًا">
+            <label for="difficulty-sometimes">أحيانًا</label><br>
+            <input type="radio" id="difficulty-rarely" name="difficulty" value="نادرا">
+            <label for="difficulty-rarely">نادرا</label>
+        </div><br>
+
+        <div class="question-card">
+            <h4>لو كان هناك تطبيق يعرض خطوات الحل وجدول التكرارات والـ Error، هل سيكون مفيدًا لك؟</h4>
+            <input type="radio" id="usefulness-yes" name="app_usefulness" value="مفيد جدا" required>
+            <label for="usefulness-yes">مفيد جدا</label><br>
+            <input type="radio" id="usefulness-maybe" name="app_usefulness" value="ربما">
+            <label for="usefulness-maybe">ربما</label><br>
+            <input type="radio" id="usefulness-no" name="app_usefulness" value="غير مهتم">
+            <label for="usefulness-no">غير مهتم</label>
+        </div><br>
+
+        <div class="question-card" dir="rtl">
+            <label for="my-app">ما اسم التطبيق الذي تستخدمه بشكل أساسي؟</label><br>
+            <textarea id="my-app" name="my-app" rows="3"></textarea>
+        </div><br>
+
+        <div class="question-card" dir="rtl">
+            <label for="important-feature">ما أهم ميزة لو وجدتها في التطبيق ستجعلك تفضله على التطبيقات الأخرى؟</label><br>
+            <textarea id="important-feature" name="important_feature" rows="3" dir="rtl"></textarea>
+        </div><br>
+
+        <div class="question-card" dir="rtl">
+            <label for="suggestions">هل لديك أي اقتراحات أو مشاكل تتمنى أن يحلها التطبيق؟</label><br>
+            <textarea id="suggestions" name="suggestions" rows="3" dir="rtl"></textarea><br><br>
+            <button type="submit" class="submit-btn">Submit Survey</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycby7dfK1xXfmLjJ3nXpgsOuT9CAx-shWBxWutJdln_5BPTDdvtAlGud7e0viSMHMUiJpNw/exec";
+
+const form = document.querySelector("#survey-form");
+
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    const data = {};
+    const formData = new FormData(form);
+
+    for (const [key, value] of formData.entries()) {
+        if (data[key]) {
+            data[key] += ", " + value;
+        } else {
+            data[key] = value;
+        }
+    }
+
+    try {
+        const params = new URLSearchParams();
+        for (const key in data) {
+            params.append(key, data[key]);
+        }
+
+        await fetch(scriptURL, {
+            method: "POST",
+            mode: "no-cors",
+            body: params
+        });
+
+        alert("Your response was sent. Please verify that it appears in the Google Sheet.");
+        form.reset();
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+        console.error(error);
+
+    } finally {
+        button.disabled = false;
+        button.textContent = "Submit Survey";
+    }
+});
+</script>
+
+</body>
+</html>
